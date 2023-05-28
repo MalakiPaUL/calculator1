@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Calculator</title>
+  <link rel="stylesheet" href="mycss.css">
+</head>
+<body>   
+
+  <div class="Calculator">
+    <div class="display">
+        <p class="mine">Calculator with exponent function by:</p> <p class="mine">Paul Malaki</p>
+      <input type="text" id="result" disabled>
+    </div>
+
+    <div class="button">
+    
+      <button class="eg" onclick="clearResult()">AC</button>
+      <button class="eg" onclick="deleteResult()">DEL</button>
+      <button class="eg" onclick="insertvalue('^')">^</button>
+      <button class="eg" onclick="insertvalue('/')">/</button>
+      <button onclick="insertvalue('7')">7</button>
+      <button onclick="insertvalue('8')">8</button>
+      <button onclick="insertvalue('9')">9</button>
+      <button class="eg" onclick="insertvalue('*')">*</button>
+      <button onclick="insertvalue('4')">4</button>
+      <button onclick="insertvalue('5')">5</button>
+      <button onclick="insertvalue('6')">6</button>
+      <button class="eg" onclick="insertvalue('-')">-</button>
+      <button onclick="insertvalue('1')">1</button>
+      <button onclick="insertvalue('2')">2</button>
+      <button onclick="insertvalue('3')">3</button>
+      <button class="eg" onclick="insertvalue('+')">+</button>
+      <button onclick="insertvalue('00')">00</button>
+      <button onclick="insertvalue('0')">0</button>
+      <button onclick="insertvalue('.')">.</button>
+      <button class="eg" onclick="calculate()">=</button>
+      
+    </div>
+  </div>
+  <script>
+    let result=document.getElementById('result');
+    
+    function insertvalue(value){
+      result.value += value;
+    }
+    function clearResult(){
+      result.value ='';
+    }
+  function deleteResult(){
+      result.value = result.value.slice(0, -1);
+    }
+    
+   function calculate() {
+   var expression = document.getElementById("result").value;
+       expression = expression.replace("^", "**");
+   var result;
+   try {
+    result = eval(expression);
+   } catch (e) {
+    result = "Syntax Error";
+   }
+   document.getElementById("result").value = result;
+  }
+  </script>
+</body>
+</html>
